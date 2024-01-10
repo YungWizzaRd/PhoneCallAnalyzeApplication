@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Analyzer</string>
+    <string name="stat">Statistika</string>
+    <string name="settings">Iestatījumi</string>
+    <string name="Exit">Iziet</string>
+    <string name="back">Atpakaļ</string>
+    <string name="filter">Filtrs</string>
+    <string name="hint_search">Meklēt pēc Vāŗda, numura u.t.t.</string>
+    <string name="often_calls">Visbiežākie zvani</string>
+    <string name="rarest_calls">Visretākie zvani</string>
+    <string name="longest_calls">Garākie zvani</string>
+    <string name="shortest_call">Īsakie zvani</string>
+    <string name="theme">Nakts režīīms</string>
+    <string name="country">Valsts kods</string>
+    <string name="time">Laika formāts</string>
+    <string name="time_seconds">Sekundes</string>
+    <string name="time_minutes">Minūtes</string>
+    <string name="time_all">St:Min:Sek</string>
+    <string name="time_hours">Stundas</string>
+    <string name="name">"Kontakta vārds: "</string>
+    <string name="number">"Numurs: "</string>
+    <string name="count">"Zvanu skaits: "</string>
+    <string name="total_time">"Kopējais laiks: "</string>
+    <string name="minutes">Minūtes</string>
+    <string name="hours">Stundas</string>
+    <string name="seconds">Sekundes</string>
+    <string name="english">Angļu</string>
+    <string name="russian">Krievu</string>
+    <string name="latvian">Latviešu</string>
+    <string name="language">Valoda</string>
+</resources>

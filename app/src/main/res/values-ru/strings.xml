@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Analyzer</string>
+    <string name="stat">Статистика</string>
+    <string name="settings">Настройки</string>
+    <string name="Exit">Выход</string>
+    <string name="back">Назад</string>
+    <string name="filter">Фильтр</string>
+    <string name="hint_search">Найти по имени, телефону и т.д.</string>
+    <string name="theme">Ночной режим</string>
+    <string name="country">Код страны</string>
+    <string name="time">Формат времени</string>
+    <string name="time_seconds">Секунды</string>
+    <string name="time_minutes">Минуты</string>
+    <string name="time_all">Ч:М:С</string>
+    <string name="time_hours">Часы</string>
+    <string name="name">Имя контакта:,</string>
+    <string name="number">Номер:</string>
+    <string name="count">Количество звонков:</string>
+    <string name="total_time">Общая длительность:</string>
+    <string name="often_calls">Частейшие звонки:</string>
+    <string name="rarest_calls">Редчайшие звонки:</string>
+    <string name="longest_calls">Длиннейшие звонки:</string>
+    <string name="shortest_call">Кротчайшие звонки:</string>
+    <string name="minutes">минут</string>
+    <string name="hours">Часов</string>
+    <string name="seconds">Секунд</string>
+    <string name="english">Английский</string>
+    <string name="russian">Русский</string>
+    <string name="latvian">Латышский</string>
+    <string name="language">Язык</string>
+</resources>

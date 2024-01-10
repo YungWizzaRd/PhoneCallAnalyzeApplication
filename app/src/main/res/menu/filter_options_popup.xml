@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/filter_group"  android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/none"
+            android:title="@string/none"
+            android:visible="false"
+            />
+
+        <item
+            android:id="@+id/often_calls"
+            android:title="@string/often_calls" />
+        <item
+            android:id="@+id/rarest_calls"
+            android:title="@string/rarest_calls" />
+        <item
+            android:id="@+id/longest_calls"
+            android:title="@string/longest_calls" />
+        <item
+            android:id="@+id/shortest_calls"
+            android:title="@string/shortest_call" />
+
+    </group>
+</menu>
