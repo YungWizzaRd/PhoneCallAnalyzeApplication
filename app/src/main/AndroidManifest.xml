@@ -16,6 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Analyzer"
         tools:targetApi="31">
+        <activity android:name=".Login"
+            android:exported="false" />
+        <activity android:name=".Register"
+            android:exported="false" />
+        <activity
+            android:name=".ContactList"
+            android:exported="false" />
         <activity
             android:name=".Settings"
             android:exported="false" />
