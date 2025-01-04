@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
         });
         createContactList.setOnClickListener(v -> {
             if (currentUser != null) {
-                startActivity(new Intent(this, ContactList.class));
+                Intent intent = new Intent(this, ContactList.class);
+                startActivity(intent);
             }
         });
         exit.setOnClickListener(v -> finishAffinity());

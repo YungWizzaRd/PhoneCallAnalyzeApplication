@@ -20,8 +20,9 @@
             android:exported="false" />
         <activity android:name=".Register"
             android:exported="false" />
-        <activity
-            android:name=".ContactList"
+        <activity android:name=".ContactList"
+            android:exported="false" />
+        <activity android:name=".SelectableContactsAdapter"
             android:exported="false" />
         <activity
             android:name=".Settings"
