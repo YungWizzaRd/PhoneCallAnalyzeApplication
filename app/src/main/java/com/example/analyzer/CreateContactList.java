@@ -181,12 +181,14 @@ public class CreateContactList extends AppCompatActivity {
                 .add(contactList)
                 .addOnSuccessListener(documentReference -> {
                     Toast.makeText(this, "List saved successfully!", Toast.LENGTH_SHORT).show();
+                    setResult(RESULT_OK); // Notify the calling activity
                     finish();
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Failed to save list.", Toast.LENGTH_SHORT).show();
                 });
     }
+
 
     private void updateSelectedCount() {
         int count = adapter.getSelectedContacts().size();

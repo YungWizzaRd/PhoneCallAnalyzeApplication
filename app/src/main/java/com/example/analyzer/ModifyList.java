@@ -119,8 +119,6 @@ public class ModifyList extends AppCompatActivity {
             return;
         }
 
-        Log.d("ModifyListActivity", "Saving changes: Name=" + updatedName + ", isPublic=" + isPublic);
-
         Map<String, Object> updatedData = new HashMap<>();
         updatedData.put("name", updatedName);
         updatedData.put("isPublic", isPublic);
@@ -130,6 +128,7 @@ public class ModifyList extends AppCompatActivity {
                 .update(updatedData)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(this, "List updated successfully", Toast.LENGTH_SHORT).show();
+                    setResult(RESULT_OK); // Notify the calling activity
                     finish();
                 })
                 .addOnFailureListener(e -> {
@@ -137,17 +136,20 @@ public class ModifyList extends AppCompatActivity {
                 });
     }
 
+
     private void deleteList() {
         db.collection("contactLists").document(listId)
                 .delete()
                 .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(this, "List deleted as it contains no contacts", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "List deleted successfully", Toast.LENGTH_SHORT).show();
+                    setResult(RESULT_OK); // Notify the calling activity
                     finish();
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Failed to delete the list", Toast.LENGTH_SHORT).show();
                 });
     }
+
 
     private void showContactEditDialog(int position) {
         Map<String, String> contact = contacts.get(position);

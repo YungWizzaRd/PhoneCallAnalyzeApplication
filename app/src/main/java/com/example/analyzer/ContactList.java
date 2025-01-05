@@ -206,10 +206,10 @@ public class ContactList extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CREATE_LIST || requestCode == REQUEST_MODIFY_LIST) {
-            if (resultCode == RESULT_OK) {
-                loadContactLists(); // Reload the contact lists
-            }
+        if ((requestCode == REQUEST_CREATE_LIST || requestCode == REQUEST_MODIFY_LIST) && resultCode == RESULT_OK) {
+            loadContactLists(); // Reload the contact lists
         }
     }
+
 }
+
