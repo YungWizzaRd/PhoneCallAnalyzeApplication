@@ -43,14 +43,11 @@ public class ModifyListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.modify_list_contact_item, parent, false);
         }
 
-        // Get the current contact
         Map<String, String> contact = contacts.get(position);
 
-        // Find views in the layout
         TextView nameTextView = convertView.findViewById(R.id.contactNameTextView);
         TextView phoneTextView = convertView.findViewById(R.id.contactPhoneTextView);
 
-        // Bind contact data to the views
         nameTextView.setText(contact.get("name"));
         phoneTextView.setText(contact.get("phone"));
 
