@@ -4,27 +4,22 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Loading Indicator -->
     <ProgressBar
         android:id="@+id/loadingIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:visibility="gone" />
 
-    <!-- No Lists Text -->
     <TextView
         android:id="@+id/noListsText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="No public lists available."
-        android:visibility="gone"
-        android:textAlignment="center"
-        android:padding="16dp"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:gravity="center"
+        android:visibility="gone" />
 
-    <!-- Other User Lists -->
     <ListView
         android:id="@+id/otherUserListsView"
         android:layout_width="match_parent"
