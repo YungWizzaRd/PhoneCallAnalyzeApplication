@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -11,14 +12,10 @@ import android.provider.ContactsContract;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,41 +24,34 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class CreateContactList extends AppCompatActivity {
+public class AddContacts extends AppCompatActivity {
     private static final int REQUEST_READ_CONTACTS = 1;
 
-    private FirebaseFirestore db;
     private SelectableContactsAdapter adapter;
-    private EditText listNameField;
     private EditText searchField;
-    private CheckBox publicListCheckbox;
     private TextView selectedCountTextView; // Selection indicator
     private List<Map<String, String>> allContacts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_contact_list);
-
-        db = FirebaseFirestore.getInstance();
+        setContentView(R.layout.activity_add_contacts);
 
         initializeUI();
         checkPermissions();
     }
 
     private void initializeUI() {
-        listNameField = findViewById(R.id.listNameField);
         searchField = findViewById(R.id.searchField);
-        publicListCheckbox = findViewById(R.id.publicListCheckbox);
         selectedCountTextView = findViewById(R.id.selectedCountTextView); // Selection indicator
         ListView contactsListView = findViewById(R.id.contactsListView);
-        Button saveButton = findViewById(R.id.saveButton);
+        Button addButton = findViewById(R.id.addContactsButton);
 
         allContacts = new ArrayList<>();
-        adapter = new SelectableContactsAdapter(this, allContacts); // Pass the updater
+        adapter = new SelectableContactsAdapter(this, allContacts);
         contactsListView.setAdapter(adapter);
 
-        saveButton.setOnClickListener(v -> saveList());
+        addButton.setOnClickListener(v -> addSelectedContacts());
 
         searchField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -156,36 +146,19 @@ public class CreateContactList extends AppCompatActivity {
         adapter.updateContacts(filteredContacts);
     }
 
-    private void saveList() {
-        String listName = listNameField.getText().toString().trim();
-        boolean isPublic = publicListCheckbox.isChecked();
+    private void addSelectedContacts() {
         List<Map<String, String>> selectedContacts = new ArrayList<>(adapter.getSelectedContacts());
-
-        if (listName.isEmpty()) {
-            Toast.makeText(this, "Please enter a name for the contact list.", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
         if (selectedContacts.isEmpty()) {
             Toast.makeText(this, "Please select at least one contact.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Map<String, Object> contactList = new HashMap<>();
-        contactList.put("name", listName);
-        contactList.put("isPublic", isPublic);
-        contactList.put("contacts", selectedContacts);
-        contactList.put("ownerId", FirebaseAuth.getInstance().getCurrentUser().getUid());
-
-        db.collection("contactLists")
-                .add(contactList)
-                .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(this, "List saved successfully!", Toast.LENGTH_SHORT).show();
-                    finish();
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Failed to save list.", Toast.LENGTH_SHORT).show();
-                });
+        // Pass the selected contacts back to the calling activity
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("SELECTED_CONTACTS", (ArrayList<Map<String, String>>) selectedContacts);
+        setResult(RESULT_OK, resultIntent);
+        finish();
     }
 
     private void updateSelectedCount() {

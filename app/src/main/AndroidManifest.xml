@@ -28,10 +28,12 @@
 
         <activity android:name=".CreateContactList"
             android:exported="false" />
-
+        <activity android:name=".OtherUserLists"
+            android:exported="false" />
         <activity android:name=".ModifyList"
             android:exported="false" />
-
+        <activity android:name=".AddContacts"
+            android:exported="false" />
 
         <activity
             android:name=".Settings"

@@ -1,9 +1,9 @@
 package com.example.analyzer;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -200,6 +200,21 @@ public class ModifyList extends AppCompatActivity {
     }
 
     private void navigateToAddContacts() {
-        // Implement adding contacts functionality if needed
+        Intent intent = new Intent(this, AddContacts.class);
+        startActivityForResult(intent, 100);
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && resultCode == RESULT_OK) {
+            List<Map<String, String>> newContacts = (List<Map<String, String>>) data.getSerializableExtra("SELECTED_CONTACTS");
+
+            if (newContacts != null && !newContacts.isEmpty()) {
+                contacts.addAll(newContacts);
+                adapter.notifyDataSetChanged();
+                Toast.makeText(this, "Contacts added successfully", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 }

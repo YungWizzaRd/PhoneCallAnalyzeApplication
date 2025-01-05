@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.util.Log;
 
-import androidx.annotation.NonNull;
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -36,26 +36,40 @@ public class ContactListAdapter extends BaseAdapter {
         return position;
     }
 
-    @NonNull
     @Override
-    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.contact_list_item, parent, false);
         }
 
-        TextView listNameTextView = convertView.findViewById(R.id.listNameTextView);
-        TextView listStatusTextView = convertView.findViewById(R.id.listStatusTextView);
-        TextView listCountTextView = convertView.findViewById(R.id.listCountTextView);
-
         Map<String, Object> list = contactLists.get(position);
-        String listName = (String) list.get("name");
-        boolean isPublic = (boolean) list.get("isPublic");
-        int contactCount = (int) list.get("contactCount");
 
-        listNameTextView.setText(listName);
-        listStatusTextView.setText(isPublic ? "Public" : "Private");
-        listCountTextView.setText(contactCount + " Contacts");
+        TextView nameTextView = convertView.findViewById(R.id.listNameTextView);
+        TextView statusTextView = convertView.findViewById(R.id.listStatusTextView);
+        TextView contactCountTextView = convertView.findViewById(R.id.listContactCountTextView);
+
+        try {
+            // Parse list name
+            String name = list.get("name") != null ? list.get("name").toString() : "Unnamed List";
+
+            // Parse isPublic status
+            boolean isPublic = list.containsKey("isPublic") && list.get("isPublic") instanceof Boolean && (boolean) list.get("isPublic");
+
+            // Parse contacts
+            List<Map<String, String>> contacts = list.get("contacts") instanceof List ? (List<Map<String, String>>) list.get("contacts") : new ArrayList<>();
+
+            // Bind data to views
+            nameTextView.setText(name);
+            statusTextView.setText(isPublic ? "Public" : "Private");
+            contactCountTextView.setText("Contacts: " + contacts.size());
+        } catch (Exception e) {
+            Log.e("ContactListAdapter", "Error in getView at position: " + position, e);
+            statusTextView.setText("Private"); // Default fallback
+            contactCountTextView.setText("Contacts: 0");
+        }
 
         return convertView;
     }
+
+
 }

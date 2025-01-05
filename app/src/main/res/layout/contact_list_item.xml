@@ -2,30 +2,32 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp"
-    android:background="?attr/selectableItemBackground">
+    android:padding="8dp">
 
+    <!-- List Name -->
     <TextView
         android:id="@+id/listNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="List Name"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
+    <!-- List Status -->
     <TextView
         android:id="@+id/listStatusTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Status"
+        android:text="Status: Public"
         android:textSize="14sp"
         android:textColor="@android:color/darker_gray" />
 
+    <!-- Contact Count -->
     <TextView
-        android:id="@+id/listCountTextView"
+        android:id="@+id/listContactCountTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="0 Contacts"
+        android:text="Contacts: 0"
         android:textSize="14sp"
         android:textColor="@android:color/darker_gray" />
 </LinearLayout>

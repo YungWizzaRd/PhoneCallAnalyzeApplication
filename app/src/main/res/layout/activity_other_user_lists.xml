@@ -4,24 +4,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Create List Button -->
-    <Button
-        android:id="@+id/createListButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Create New List"
-        android:textColor="@android:color/white"
-        android:layout_marginBottom="8dp" />
-
-    <!-- Other User Lists Button -->
-    <Button
-        android:id="@+id/otherUserListsButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Other User Lists"
-        android:textColor="@android:color/white"
-        android:layout_marginBottom="8dp" />
-
     <!-- Loading Indicator -->
     <ProgressBar
         android:id="@+id/loadingIndicator"
@@ -35,16 +17,16 @@
         android:id="@+id/noListsText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="You haven't created any lists yet."
+        android:text="No public lists available."
         android:visibility="gone"
         android:textAlignment="center"
         android:padding="16dp"
         android:textColor="@android:color/darker_gray"
         android:textSize="16sp" />
 
-    <!-- Contact Lists -->
+    <!-- Other User Lists -->
     <ListView
-        android:id="@+id/contactListsView"
+        android:id="@+id/otherUserListsView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@android:color/darker_gray"
